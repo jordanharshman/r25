@@ -1,0 +1,14 @@
+# Imports and Libraries ---------------------------------------------------
+library(tidyverse)
+copus <- read_csv("https://aub.ie/copus")
+
+# Examples from the slides ------------------------------------------------
+copus |>
+  group_by(Year, Bcluster) |>
+  summarize(Count = n())
+
+copus |>
+  mutate(Sem = case_match(Semester,
+         "spring" ~ "Spring",
+         "fall" ~ "Fall",
+         .default = "Missing"))
